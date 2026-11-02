@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block title %}Login - Student Portal Demo{% endblock %}
+{% block content %}
+<section class="auth-layout portal-auth">
+  <div class="auth-aside">
+    <span class="eyebrow">Student Portal Demo</span>
+    <h1>Protected by 2FA Shield.</h1>
+    <p>This simulated portal requires a local password and a current 6-digit code verified by 2FA Shield.</p>
+    <div class="benefit-list">
+      <span><i class="bi bi-check-circle"></i> Demo username: student</span>
+      <span>Use your locally configured portal password.</span>
+      <span><i class="bi bi-check-circle"></i> 2FA code comes from Shield</span>
+    </div>
+  </div>
+  <div class="auth-card">
+    <div class="auth-heading"><h2>Portal login</h2><p>Open 2FA Shield, copy the current 6-digit code for this application, and enter it here.</p></div>
+    {% if not api_client_configured %}
+    <div class="alert alert-warning alert-modern">Set SHIELD_API_CLIENT_ID and SHIELD_API_CLIENT_SECRET to the credentials from the Student Portal Demo protected app in 2FA Shield.</div>
+    {% endif %}
+    <form method="post"><input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+      <label class="form-label" for="username">Username</label>
+      <input class="form-control mb-3" id="username" name="username" autocomplete="username" required>
+      <label class="form-label" for="password">Password</label>
+      <input class="form-control mb-3" id="password" name="password" type="password" autocomplete="current-password" required>
+      <label class="form-label" for="code">2FA Code from 2FA Shield</label>
+      <input class="form-control otp-input mb-3" id="code" name="code" maxlength="6" inputmode="numeric" autocomplete="one-time-code" placeholder="000000" required>
+      <button class="btn btn-primary w-100" type="submit">Login</button>
+    </form>
+  </div>
+</section>
+{% endblock %}

@@ -1,0 +1,25 @@
+# Local secrets and generated data
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.pfx
+*.p12
+*.db
+*.db-*
+*.sqlite*
+*.log
+instance/
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.ipynb_checkpoints/
+build/
+dist/
+generated/
+.DS_Store
+Thumbs.db

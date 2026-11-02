@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block title %}2FA Shield - MFA Gateway{% endblock %}
+{% block content %}
+<section class="hero-section">
+  <div class="container">
+    <span class="eyebrow">Authenticator and MFA Gateway</span>
+    <h1>2FA Shield</h1>
+    <p class="hero-copy">Educational Multi-Factor Authentication Lab for protecting demo applications and accounts with unique time-based 6-digit codes.</p>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="{{ url_for('register') }}"><i class="bi bi-person-plus"></i> Create Account</a>
+      <a class="btn btn-outline-primary" href="{{ url_for('login') }}"><i class="bi bi-box-arrow-in-right"></i> Login</a>
+    </div>
+  </div>
+</section>
+<section class="section-band">
+  <div class="container">
+    <div class="section-heading">
+      <h2>Two connected demo applications</h2>
+      <p class="text-secondary">2FA Shield stores protected accounts and generates time-based 2FA codes. The Student Portal Demo asks Shield to verify submitted codes before access is granted.</p>
+    </div>
+    <div class="feature-grid">
+      <div class="feature-card"><i class="bi bi-key"></i><h3>Per-app TOTP</h3><p>Every protected application gets its own RFC 6238 secret.</p></div>
+      <div class="feature-card"><i class="bi bi-arrow-repeat"></i><h3>30-second codes</h3><p>Codes use 30-second intervals. Reload the page to obtain a new code.</p></div>
+      <div class="feature-card"><i class="bi bi-plug"></i><h3>Verification API</h3><p>External apps call Shield before accepting a login.</p></div>
+      <div class="feature-card"><i class="bi bi-journal-check"></i><h3>Audit trail</h3><p>Successes, failures, lockouts, and app changes are logged.</p></div>
+    </div>
+  </div>
+</section>
+{% endblock %}

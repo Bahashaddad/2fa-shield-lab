@@ -1,0 +1,55 @@
+﻿original_input,original_entry,prepared_repository,classification,reason,public_destination
+2fa-shield.zip,2fa-shield/app.py,2fa-shield-lab,REMOVE,Unused legacy implementation/template; original retained privately,Excluded from upload copy
+2fa-shield.zip,2fa-shield/DEMO.md,2fa-shield-lab,MODIFY,Replaced or reorganized in prepared edition,See repository tree
+2fa-shield.zip,2fa-shield/instance/shield.db,2fa-shield-lab,PRIVATE — DO NOT PUBLISH,"Original credential/runtime/report material excluded; reports may have identifiers, secrets, or unsupported claims",Excluded from upload copy
+2fa-shield.zip,2fa-shield/protected_app.py,2fa-shield-lab,MODIFY,Replaced or reorganized in prepared edition,protected_app.py
+2fa-shield.zip,2fa-shield/README.md,2fa-shield-lab,MODIFY,Replaced or reorganized in prepared edition,README.md
+2fa-shield.zip,2fa-shield/requirements.txt,2fa-shield-lab,MODIFY,Replaced or reorganized in prepared edition,requirements.txt
+2fa-shield.zip,2fa-shield/REQUIREMENTS_MAPPING.md,2fa-shield-lab,MODIFY,Replaced or reorganized in prepared edition,See repository tree
+2fa-shield.zip,2fa-shield/server.current.err.log,2fa-shield-lab,REMOVE,Empty generated log; no public value,Excluded
+2fa-shield.zip,2fa-shield/server.current.out.log,2fa-shield-lab,REMOVE,Empty generated log; no public value,Excluded
+2fa-shield.zip,2fa-shield/server.err.log,2fa-shield-lab,PRIVATE — DO NOT PUBLISH,"Original credential/runtime/report material excluded; reports may have identifiers, secrets, or unsupported claims",Excluded from upload copy
+2fa-shield.zip,2fa-shield/server.out.log,2fa-shield-lab,PRIVATE — DO NOT PUBLISH,"Original credential/runtime/report material excluded; reports may have identifiers, secrets, or unsupported claims",Excluded from upload copy
+2fa-shield.zip,2fa-shield/shield_app.py,2fa-shield-lab,MODIFY,Replaced or reorganized in prepared edition,shield_app.py
+2fa-shield.zip,2fa-shield/static/css/styles.css,2fa-shield-lab,KEEP,Relevant active asset/view; response security enforced server-side,static/css/styles.css
+2fa-shield.zip,2fa-shield/static/js/totp_timer.js,2fa-shield-lab,MODIFY,Replaced or reorganized in prepared edition,static/js/totp_timer.js
+2fa-shield.zip,2fa-shield/templates/admin.html,2fa-shield-lab,REMOVE,Unused legacy implementation/template; original retained privately,Excluded from upload copy
+2fa-shield.zip,2fa-shield/templates/base.html,2fa-shield-lab,REMOVE,Unused legacy implementation/template; original retained privately,Excluded from upload copy
+2fa-shield.zip,2fa-shield/templates/dashboard.html,2fa-shield-lab,REMOVE,Unused legacy implementation/template; original retained privately,Excluded from upload copy
+2fa-shield.zip,2fa-shield/templates/index.html,2fa-shield-lab,REMOVE,Unused legacy implementation/template; original retained privately,Excluded from upload copy
+2fa-shield.zip,2fa-shield/templates/login.html,2fa-shield-lab,REMOVE,Unused legacy implementation/template; original retained privately,Excluded from upload copy
+2fa-shield.zip,2fa-shield/templates/protected_accounts.html,2fa-shield-lab,REMOVE,Unused legacy implementation/template; original retained privately,Excluded from upload copy
+2fa-shield.zip,2fa-shield/templates/protected_account_access.html,2fa-shield-lab,REMOVE,Unused legacy implementation/template; original retained privately,Excluded from upload copy
+2fa-shield.zip,2fa-shield/templates/protected_account_form.html,2fa-shield-lab,REMOVE,Unused legacy implementation/template; original retained privately,Excluded from upload copy
+2fa-shield.zip,2fa-shield/templates/recovery_codes.html,2fa-shield-lab,REMOVE,Unused legacy implementation/template; original retained privately,Excluded from upload copy
+2fa-shield.zip,2fa-shield/templates/register.html,2fa-shield-lab,REMOVE,Unused legacy implementation/template; original retained privately,Excluded from upload copy
+2fa-shield.zip,2fa-shield/templates/setup_mfa.html,2fa-shield-lab,REMOVE,Unused legacy implementation/template; original retained privately,Excluded from upload copy
+2fa-shield.zip,2fa-shield/templates/verify_mfa.html,2fa-shield-lab,REMOVE,Unused legacy implementation/template; original retained privately,Excluded from upload copy
+2fa-shield.zip,2fa-shield/templates_protected/base.html,2fa-shield-lab,MODIFY,Replaced or reorganized in prepared edition,templates_protected/base.html
+2fa-shield.zip,2fa-shield/templates_protected/dashboard.html,2fa-shield-lab,MODIFY,Replaced or reorganized in prepared edition,templates_protected/dashboard.html
+2fa-shield.zip,2fa-shield/templates_protected/login.html,2fa-shield-lab,MODIFY,Replaced or reorganized in prepared edition,templates_protected/login.html
+2fa-shield.zip,2fa-shield/templates_shield/admin.html,2fa-shield-lab,REMOVE,Unused legacy implementation/template; original retained privately,Excluded from upload copy
+2fa-shield.zip,2fa-shield/templates_shield/admin_dashboard.html,2fa-shield-lab,MODIFY,Replaced or reorganized in prepared edition,templates_shield/admin_dashboard.html
+2fa-shield.zip,2fa-shield/templates_shield/admin_login.html,2fa-shield-lab,REMOVE,Unused legacy implementation/template; original retained privately,Excluded from upload copy
+2fa-shield.zip,2fa-shield/templates_shield/apps.html,2fa-shield-lab,MODIFY,Replaced or reorganized in prepared edition,templates_shield/apps.html
+2fa-shield.zip,2fa-shield/templates_shield/app_detail.html,2fa-shield-lab,MODIFY,Replaced or reorganized in prepared edition,templates_shield/app_detail.html
+2fa-shield.zip,2fa-shield/templates_shield/app_form.html,2fa-shield-lab,MODIFY,Replaced or reorganized in prepared edition,templates_shield/app_form.html
+2fa-shield.zip,2fa-shield/templates_shield/app_secret_once.html,2fa-shield-lab,MODIFY,Replaced or reorganized in prepared edition,templates_shield/app_secret_once.html
+2fa-shield.zip,2fa-shield/templates_shield/audit_logs.html,2fa-shield-lab,KEEP,Relevant active asset/view; response security enforced server-side,templates_shield/audit_logs.html
+2fa-shield.zip,2fa-shield/templates_shield/base.html,2fa-shield-lab,MODIFY,Replaced or reorganized in prepared edition,templates_shield/base.html
+2fa-shield.zip,2fa-shield/templates_shield/dashboard.html,2fa-shield-lab,MODIFY,Replaced or reorganized in prepared edition,templates_shield/dashboard.html
+2fa-shield.zip,2fa-shield/templates_shield/index.html,2fa-shield-lab,MODIFY,Replaced or reorganized in prepared edition,templates_shield/index.html
+2fa-shield.zip,2fa-shield/templates_shield/login.html,2fa-shield-lab,MODIFY,Replaced or reorganized in prepared edition,templates_shield/login.html
+2fa-shield.zip,2fa-shield/templates_shield/protected_accounts.html,2fa-shield-lab,REMOVE,Unused legacy implementation/template; original retained privately,Excluded from upload copy
+2fa-shield.zip,2fa-shield/templates_shield/protected_account_access.html,2fa-shield-lab,REMOVE,Unused legacy implementation/template; original retained privately,Excluded from upload copy
+2fa-shield.zip,2fa-shield/templates_shield/protected_account_form.html,2fa-shield-lab,REMOVE,Unused legacy implementation/template; original retained privately,Excluded from upload copy
+2fa-shield.zip,2fa-shield/templates_shield/recovery_codes.html,2fa-shield-lab,KEEP,Relevant active asset/view; response security enforced server-side,templates_shield/recovery_codes.html
+2fa-shield.zip,2fa-shield/templates_shield/register.html,2fa-shield-lab,MODIFY,Replaced or reorganized in prepared edition,templates_shield/register.html
+2fa-shield.zip,2fa-shield/templates_shield/setup_mfa.html,2fa-shield-lab,MODIFY,Replaced or reorganized in prepared edition,templates_shield/setup_mfa.html
+2fa-shield.zip,2fa-shield/templates_shield/verify_mfa.html,2fa-shield-lab,MODIFY,Replaced or reorganized in prepared edition,templates_shield/verify_mfa.html
+2fa-shield.zip,2fa-shield/twofa_shield.db,2fa-shield-lab,PRIVATE — DO NOT PUBLISH,"Original credential/runtime/report material excluded; reports may have identifiers, secrets, or unsupported claims",Excluded from upload copy
+2fa-shield.zip,2fa-shield/__pycache__/app.cpython-314.pyc,2fa-shield-lab,REMOVE,"Generated, empty, bundled executable, or superseded unsafe launcher",Excluded from upload copy
+2fa-shield.zip,2fa-shield/__pycache__/protected_app.cpython-314.pyc,2fa-shield-lab,REMOVE,"Generated, empty, bundled executable, or superseded unsafe launcher",Excluded from upload copy
+2fa-shield.zip,2fa-shield/__pycache__/shield_app.cpython-314.pyc,2fa-shield-lab,REMOVE,"Generated, empty, bundled executable, or superseded unsafe launcher",Excluded from upload copy
+2fa-shield.zip,2fa-shield/Group6_SecuirtyRequirements.pdf,2fa-shield-lab,PRIVATE — DO NOT PUBLISH,"Original credential/runtime/report material excluded; reports may have identifiers, secrets, or unsupported claims",Excluded from upload copy
+2fa-shield.zip,2fa-shield/Group6_Security Use-Miss-Use-Case.pdf,2fa-shield-lab,PRIVATE — DO NOT PUBLISH,"Original credential/runtime/report material excluded; reports may have identifiers, secrets, or unsupported claims",Excluded from upload copy

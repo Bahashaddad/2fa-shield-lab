@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %}Register - 2FA Shield{% endblock %}
+{% block content %}
+<section class="auth-layout">
+  <div class="auth-aside">
+    <span class="eyebrow">Create Shield Account</span>
+    <h1>Manage protected app codes from one gateway.</h1>
+    <p>Your Shield account is itself protected with password plus TOTP and recovery codes.</p>
+  </div>
+  <div class="auth-card">
+    <div class="auth-heading"><h2>Register</h2><p>Set up your 2FA Shield account.</p></div>
+    <form method="post"><input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+      <label class="form-label" for="username">Username</label>
+      <input class="form-control mb-3" id="username" name="username" required minlength="3">
+      <label class="form-label" for="email">Email</label>
+      <input class="form-control mb-3" id="email" name="email" type="email">
+      <label class="form-label" for="password">Password</label>
+      <input class="form-control mb-3" id="password" name="password" type="password" required minlength="12">
+      <button class="btn btn-primary w-100" type="submit">Create Account</button>
+    </form>
+  </div>
+</section>
+{% endblock %}

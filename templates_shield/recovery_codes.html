@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block title %}Recovery Codes - 2FA Shield{% endblock %}
+{% block content %}
+<section class="container content-container">
+  <div class="panel mx-auto recovery-panel">
+    <div class="page-header compact">
+      <span class="step-pill">Step 2 of 2: Store Backup Access</span>
+      <h1>Save your recovery codes</h1>
+      <p>These codes are shown once and can be used if you lose access to your authenticator app.</p>
+    </div>
+    <div class="alert alert-warning alert-modern">
+      <strong>Store these securely.</strong> Each code is single-use. Store them in a safe place. 2FA Shield will not show these codes again.
+    </div>
+    <div class="recovery-grid">
+      {% for code in codes %}
+        <code>{{ code }}</code>
+      {% endfor %}
+    </div>
+    <a class="btn btn-primary mt-4" href="{{ url_for('dashboard') }}">I saved my codes</a>
+  </div>
+</section>
+{% endblock %}

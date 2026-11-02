@@ -1,0 +1,55 @@
+2fa-shield-lab/
+├── .github/
+│   └── workflows/
+│       └── checks.yml
+├── docs/
+│   ├── demo.md
+│   ├── dependency-audit.json
+│   ├── directory-tree.txt
+│   ├── file-classification.csv
+│   ├── portfolio-review.md
+│   ├── requirements-mapping.md
+│   ├── threat-model.md
+│   └── verification.md
+├── static/
+│   ├── css/
+│   │   └── styles.css
+│   └── js/
+│       └── totp_timer.js
+├── templates_protected/
+│   ├── base.html
+│   ├── dashboard.html
+│   └── login.html
+├── templates_shield/
+│   ├── admin_dashboard.html
+│   ├── app_detail.html
+│   ├── app_form.html
+│   ├── app_secret_once.html
+│   ├── apps.html
+│   ├── audit_logs.html
+│   ├── base.html
+│   ├── dashboard.html
+│   ├── index.html
+│   ├── login.html
+│   ├── recovery_codes.html
+│   ├── register.html
+│   ├── setup_mfa.html
+│   └── verify_mfa.html
+├── tests/
+│   ├── conftest.py
+│   ├── test_portal.py
+│   └── test_security.py
+├── tools/
+│   └── check_publication.py
+├── .env.example
+├── .gitignore
+├── CHANGELOG.md
+├── LICENSE
+├── NOTICE.md
+├── README.md
+├── SECURITY.md
+├── protected_app.py
+├── pyproject.toml
+├── requirements-dev.txt
+├── requirements.txt
+└── shield_app.py

@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block title %}Dashboard - Student Portal Demo{% endblock %}
+{% block content %}
+<section class="content-container">
+  <div class="container access-container">
+    <div class="panel access-panel">
+      <span class="access-icon"><i class="bi bi-check2-shield"></i></span>
+      <h1>Welcome to Student Portal Demo</h1>
+      <p class="lead">This application is protected by 2FA Shield. Access was granted only after password + 2FA code verification.</p>
+      <div class="access-details">
+        <div><span>Authenticated User</span><strong>{{ username }}</strong></div>
+        <div><span>Password Check</span><strong>Passed locally</strong></div>
+        <div><span>2FA Check</span><strong>Verified by Shield</strong></div>
+      </div>
+      <form method="post" action="{{ url_for('logout') }}"><input type="hidden" name="csrf_token" value="{{ csrf_token() }}"><button class="btn btn-outline-primary" type="submit">Logout</button></form>
+    </div>
+  </div>
+</section>
+{% endblock %}

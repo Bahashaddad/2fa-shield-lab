@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block title %}My 2FA Codes - 2FA Shield{% endblock %}
+{% block content %}
+<section class="container-fluid dashboard-shell">
+  <aside class="sidebar">
+    <a class="sidebar-link" href="{{ url_for('dashboard') }}"><i class="bi bi-speedometer2"></i> Dashboard</a>
+    <a class="sidebar-link active" href="{{ url_for('apps') }}"><i class="bi bi-key"></i> My 2FA Codes</a>
+    <a class="sidebar-link" href="{{ url_for('new_app') }}"><i class="bi bi-plus-lg"></i> Add Protected App</a>
+  </aside>
+  <div class="dashboard-main">
+    <div class="dashboard-header">
+      <div><span class="eyebrow">Authenticator Codes</span><h1>My 2FA Codes</h1><p>These are the applications protected by 2FA Shield.</p></div>
+      <a class="btn btn-primary" href="{{ url_for('new_app') }}"><i class="bi bi-plus-lg"></i> Add Protected App</a>
+    </div>
+    {% if apps %}
+    <div class="protected-grid">
+      {% for app_item in apps %}
+      <div class="protected-card">
+        <div class="protected-card-top">
+          <span class="protected-icon"><i class="bi bi-window-lock"></i></span>
+          <div><h2>{{ app_item.app_name }}</h2><p>{{ app_item.account_identifier or "No account identifier" }}</p></div>
+        </div>
+        <div class="totp-display">{{ app_item.current_code }}</div>
+        <div class="badge-row">
+          <span class="badge badge-soft">{{ app_item.category }}</span>
+          <span class="badge {{ 'badge-success' if app_item.status == 'active' else 'badge-warning' }}">{{ app_item.status|title }}</span>
+          <span class="badge badge-soft">Reload after <span data-totp-countdown>--s</span></span>
+        </div>
+        <div class="protected-actions">
+          <a class="btn btn-sm btn-outline-primary" href="{{ url_for('app_detail', app_id=app_item.id) }}">Details</a>
+          <a class="btn btn-sm btn-outline-primary" href="{{ url_for('edit_app', app_id=app_item.id) }}">Edit</a>
+          <form method="post" action="{{ url_for('delete_app', app_id=app_item.id) }}"><input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+            <button class="btn btn-sm btn-outline-danger" type="submit">Delete</button>
+          </form>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    {% else %}
+    <div class="panel empty-state"><i class="bi bi-shield-plus"></i><h2>No protected applications yet</h2><p>Add Student Portal Demo or another application to generate a unique TOTP secret and verification API client ID.</p><a class="btn btn-primary" href="{{ url_for('new_app') }}">Add Protected App</a></div>
+    {% endif %}
+  </div>
+</section>
+{% endblock %}
+{% block scripts %}<script src="{{ url_for('static', filename='js/totp_timer.js') }}"></script>{% endblock %}

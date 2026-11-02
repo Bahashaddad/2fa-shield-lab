@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block title %}{{ protected_app.app_name }} - 2FA Shield{% endblock %}
+{% block content %}
+<section class="content-container">
+  <div class="container">
+    <div class="dashboard-header">
+      <div><span class="eyebrow">Protected App Details</span><h1>{{ protected_app.app_name }}</h1><p>Use this 6-digit code when logging into the protected demo application.</p></div>
+      <div class="d-flex gap-2 flex-wrap">
+        <a class="btn btn-outline-primary" href="{{ url_for('edit_app', app_id=protected_app.id) }}">Edit</a>
+        <a class="btn btn-primary" href="{{ url_for('apps') }}">My Codes</a>
+      </div>
+    </div>
+    <div class="row g-4">
+      <div class="col-lg-5">
+        <div class="panel">
+          <h2 class="panel-title">Current code</h2>
+          <div class="totp-display detail">{{ current_code }}</div>
+          <p class="text-secondary mb-0">Reload after <strong data-totp-countdown>--s</strong>.</p>
+        </div>
+        <div class="panel mt-4">
+          <h2 class="panel-title">QR code</h2>
+          <div class="qr-card"><img class="qr" src="{{ qr_data }}" alt="TOTP QR code"></div>
+        </div>
+      </div>
+      <div class="col-lg-7">
+        <div class="panel">
+          <h2 class="panel-title">Manual setup and API details</h2>
+          <label class="form-label">Manual secret key</label>
+          <div class="secret-box mb-3">{{ protected_app.totp_secret }}</div>
+          <label class="form-label">API client ID</label>
+          <div class="secret-box mb-3">{{ protected_app.api_client_id }}</div>
+          <p class="security-note"><i class="bi bi-info-circle"></i> API client secret is shown only once when the protected app is created.</p>
+          <hr>
+          <dl class="protected-details">
+            <div><dt>Account identifier</dt><dd>{{ protected_app.account_identifier or "-" }}</dd></div>
+            <div><dt>Category</dt><dd>{{ protected_app.category or "Other" }}</dd></div>
+            <div><dt>Status</dt><dd>{{ protected_app.status|title }}</dd></div>
+          </dl>
+          <div class="simulated-resource mt-3">
+            <i class="bi bi-box-arrow-in-right"></i>
+            <div><strong>Student Portal Demo instruction</strong><p>Copy the API client ID into `SHIELD_API_CLIENT_ID` for `protected_app.py`, then enter the current 6-digit code on the Student Portal login form.</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}
+{% block scripts %}<script src="{{ url_for('static', filename='js/totp_timer.js') }}"></script>{% endblock %}

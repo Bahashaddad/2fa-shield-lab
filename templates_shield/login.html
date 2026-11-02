@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title %}Login - 2FA Shield{% endblock %}
+{% block content %}
+<section class="auth-layout">
+  <div class="auth-aside">
+    <span class="eyebrow">Secure Gateway Login</span>
+    <h1>Access your 2FA Shield vault.</h1>
+    <p>After password verification, Shield requires an authenticator code or recovery code.</p>
+  </div>
+  <div class="auth-card">
+    <div class="auth-heading"><h2>Login</h2><p>Use your Shield credentials.</p></div>
+    <form method="post"><input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+      <label class="form-label" for="username">Username</label>
+      <input class="form-control mb-3" id="username" name="username" required>
+      <label class="form-label" for="password">Password</label>
+      <input class="form-control mb-3" id="password" name="password" type="password" required>
+      <button class="btn btn-primary w-100" type="submit">Continue</button>
+    </form>
+  </div>
+</section>
+{% endblock %}

@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+{% block title %}Dashboard - 2FA Shield{% endblock %}
+{% block content %}
+<section class="container-fluid dashboard-shell">
+  <aside class="sidebar">
+    <a class="sidebar-link active" href="{{ url_for('dashboard') }}"><i class="bi bi-speedometer2"></i> Dashboard</a>
+    <a class="sidebar-link" href="{{ url_for('apps') }}"><i class="bi bi-key"></i> My 2FA Codes</a>
+    <a class="sidebar-link" href="{{ url_for('audit_logs') }}"><i class="bi bi-journal-text"></i> Audit Activity</a>
+  </aside>
+  <div class="dashboard-main">
+    <div class="dashboard-header">
+      <div>
+        <span class="eyebrow">User Dashboard</span>
+        <h1>2FA Shield overview</h1>
+        <p>Add protected applications, view current TOTP codes, and review security activity.</p>
+      </div>
+      <div class="d-flex gap-2 flex-wrap">
+        <a class="btn btn-primary" href="{{ url_for('new_app') }}"><i class="bi bi-plus-lg"></i> Add Protected App</a>
+        <a class="btn btn-outline-primary" href="{{ url_for('apps') }}"><i class="bi bi-key"></i> View My Codes</a>
+      </div>
+    </div>
+    <div class="metric-grid">
+      <div class="metric"><span>Protected Apps</span><strong>{{ protected_app_count }}</strong><small>Accounts secured by Shield</small></div>
+      <div class="metric"><span>Shield MFA</span><strong>Enabled</strong><small>Password plus TOTP</small></div>
+      <div class="metric"><span>Recovery Codes</span><strong>{{ remaining_codes }}</strong><small>Unused backup codes</small></div>
+      <div class="metric"><span>Code Window</span><strong>30s</strong><small>RFC 6238 TOTP interval</small></div>
+    </div>
+    <div class="panel mt-4">
+      <div class="panel-heading-row">
+        <div><h2 class="panel-title">Recent protected applications</h2><p class="text-secondary mb-0">Current codes are shown for academic demonstration.</p></div>
+      </div>
+      {% if protected_apps %}
+      <div class="protected-grid">
+        {% for app_item in protected_apps %}
+        <div class="protected-card">
+          <div class="protected-card-top">
+            <span class="protected-icon"><i class="bi bi-window-lock"></i></span>
+            <div><h2>{{ app_item.app_name }}</h2><p>{{ app_item.account_identifier or "No account identifier" }}</p></div>
+          </div>
+          <div class="totp-display">{{ app_item.current_code }}</div>
+          <div class="badge-row"><span class="badge badge-soft">{{ app_item.category }}</span><span class="badge badge-success" data-totp-countdown>--s</span></div>
+          <a class="btn btn-outline-primary" href="{{ url_for('app_detail', app_id=app_item.id) }}">View Details</a>
+        </div>
+        {% endfor %}
+      </div>
+      {% else %}
+      <div class="empty-state compact"><i class="bi bi-shield-plus"></i><p>No protected apps yet.</p><a class="btn btn-primary" href="{{ url_for('new_app') }}">Add Protected App</a></div>
+      {% endif %}
+    </div>
+    <div class="panel mt-4">
+      <h2 class="panel-title">Recent audit activity</h2>
+      <div class="table-responsive">
+        <table class="table security-table align-middle">
+          <thead><tr><th>Time</th><th>Event</th><th>Result</th><th>Details</th></tr></thead>
+          <tbody>
+            {% for event in recent_events %}
+            <tr><td>{{ event.created_at }}</td><td><span class="badge badge-soft">{{ event.event_type }}</span></td><td>{{ event.result }}</td><td>{{ event.details }}</td></tr>
+            {% else %}
+            <tr><td colspan="4" class="text-secondary">No audit activity yet.</td></tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}
+{% block scripts %}<script src="{{ url_for('static', filename='js/totp_timer.js') }}"></script>{% endblock %}

@@ -1,0 +1,5 @@
+# Authorship and third-party material
+
+This portfolio edition derives from academic work supplied by the project owner. The owner confirmed that all contributors agreed to publication. Preserve contributor credit and distinguish original academic work from later portfolio improvements. New tests, hardening changes, analysis scripts, and editorial changes in this edition were prepared with AI assistance; they should not be represented as historical coursework results.
+
+The MIT license covers original project code and portfolio documentation. It does not relicense third-party libraries, services, logos, book covers, university marks, or source publications. Dependencies retain their own licenses. Original PDF screenshots, executable tools, certificates, private keys, personal identifiers, and runtime databases are excluded. Source-derived academic narrative and observations are supplied on the owner's representation of publication permission; any underlying third-party redistribution terms still apply. Verify data provenance before broader reuse.

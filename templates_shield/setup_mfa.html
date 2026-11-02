@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block title %}Enroll MFA - 2FA Shield{% endblock %}
+{% block content %}
+<section class="container content-container">
+  <div class="page-header">
+    <span class="step-pill">Step 1 of 2: Connect Authenticator App</span>
+    <h1>Enroll your authenticator</h1>
+    <p>Connect 2FA Shield to your authenticator app before accessing the protected account dashboard.</p>
+  </div>
+  <div class="row g-4">
+    <div class="col-lg-7">
+      <div class="panel">
+        <h2 class="panel-title">Scan QR code</h2>
+        <div class="qr-card">
+          <img class="qr" src="{{ qr_data }}" alt="TOTP QR code">
+        </div>
+        <ol class="instruction-list">
+          <li>Open Google Authenticator, Microsoft Authenticator, or Authy.</li>
+          <li>Scan the QR code.</li>
+          <li>Enter the current 6-digit code to confirm setup.</li>
+        </ol>
+      </div>
+    </div>
+    <div class="col-lg-5">
+      <div class="panel mb-4">
+        <h2 class="panel-title">Manual setup key</h2>
+        <div class="secret-box">{{ user.totp_secret }}</div>
+        <p class="security-note mt-3"><i class="bi bi-info-circle"></i> Your MFA secret is used to generate time-based one-time passwords and should not be shared.</p>
+      </div>
+      <div class="panel">
+        <h2 class="panel-title">Confirm setup</h2>
+        <form method="post"><input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+          <label class="form-label" for="otp">6-digit authenticator code</label>
+          <input class="form-control form-control-lg otp-input" id="otp" name="otp" inputmode="numeric" minlength="6" maxlength="6" placeholder="000000" autocomplete="one-time-code" required>
+          <button class="btn btn-primary w-100 mt-3" type="submit">Verify and finish enrollment</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

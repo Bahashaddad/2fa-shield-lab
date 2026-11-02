@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% block title %}{{ "Edit" if mode == "edit" else "Add" }} Protected App - 2FA Shield{% endblock %}
+{% block content %}
+<section class="content-container">
+  <div class="container">
+    <div class="page-header">
+      <span class="eyebrow">{{ "Edit Protected App" if mode == "edit" else "Add Protected App" }}</span>
+      <h1>{{ "Edit application" if mode == "edit" else "Add protected application/account" }}</h1>
+      <p>Each protected app receives its own TOTP secret and API client ID.</p>
+    </div>
+    <div class="panel form-panel">
+      <form method="post"><input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+        <div class="row g-3">
+          <div class="col-md-6">
+            <label class="form-label" for="app_name">App Name</label>
+            <input class="form-control" id="app_name" name="app_name" required value="{{ protected_app.app_name if protected_app else '' }}" placeholder="Student Portal Demo">
+          </div>
+          <div class="col-md-6">
+            <label class="form-label" for="account_identifier">Account Identifier</label>
+            <input class="form-control" id="account_identifier" name="account_identifier" value="{{ protected_app.account_identifier if protected_app else '' }}" placeholder="student@example.edu">
+          </div>
+          <div class="col-md-6">
+            <label class="form-label" for="category">Category</label>
+            <input class="form-control" id="category" name="category" value="{{ protected_app.category if protected_app else '' }}" placeholder="Education">
+          </div>
+          <div class="col-md-6">
+            <label class="form-label" for="app_url">App URL</label>
+            <input class="form-control" id="app_url" name="app_url" value="{{ protected_app.app_url if protected_app else '' }}" placeholder="http://127.0.0.1:5001">
+          </div>
+          <div class="col-12">
+            <label class="form-label" for="description">Description</label>
+            <textarea class="form-control" id="description" name="description" rows="4">{{ protected_app.description if protected_app else '' }}</textarea>
+          </div>
+          <div class="col-md-4">
+            <label class="form-label" for="status">Status</label>
+            <select class="form-control" id="status" name="status">
+              {% set status = protected_app.status if protected_app else 'active' %}
+              <option value="active" {{ "selected" if status == "active" else "" }}>Active</option>
+              <option value="disabled" {{ "selected" if status == "disabled" else "" }}>Disabled</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-actions">
+          <button class="btn btn-primary" type="submit">{{ "Save Changes" if mode == "edit" else "Create Protected App" }}</button>
+          <a class="btn btn-outline-primary" href="{{ url_for('apps') }}">Cancel</a>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+{% endblock %}

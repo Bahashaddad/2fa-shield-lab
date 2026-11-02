@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block title %}Verify MFA - 2FA Shield{% endblock %}
+{% block content %}
+<section class="auth-narrow">
+  <div class="auth-card">
+    {% if locked %}
+      <div class="alert alert-danger alert-modern mb-0">
+        <h1 class="h4">Account temporarily locked</h1>
+        <p class="mb-0">Too many failed MFA attempts were detected. Please try again later or contact an administrator.</p>
+        {% if locked_until %}<small class="d-block mt-2">Locked until: {{ locked_until }}</small>{% endif %}
+      </div>
+    {% else %}
+      <div class="auth-heading text-center">
+        <span class="auth-icon"><i class="bi bi-shield-check"></i></span>
+        <h1>Two-factor verification</h1>
+        <p>Enter the 6-digit code from your authenticator app.</p>
+      </div>
+      <form method="post"><input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+        <div class="mb-3">
+          <label class="form-label text-center w-100" for="otp">Authenticator code</label>
+          <input class="form-control form-control-lg otp-input text-center" id="otp" name="otp" inputmode="numeric" maxlength="6" placeholder="000000" autocomplete="one-time-code">
+        </div>
+        <button class="btn btn-primary w-100" type="submit">Verify code</button>
+        <p class="security-note justify-content-center mt-3"><i class="bi bi-clock"></i> Codes refresh every 30 seconds.</p>
+        <div class="divider">or</div>
+        <div class="mb-3">
+          <label class="form-label" for="recovery_code">Recovery code</label>
+          <input class="form-control" id="recovery_code" name="recovery_code" autocomplete="off">
+        </div>
+        <button class="btn btn-outline-primary w-100" type="submit">Use recovery code instead</button>
+      </form>
+    {% endif %}
+  </div>
+</section>
+{% endblock %}

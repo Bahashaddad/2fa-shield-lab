@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block title %}Admin Dashboard - 2FA Shield{% endblock %}
+{% block content %}
+<section class="container-fluid dashboard-shell">
+  <aside class="sidebar">
+    <a class="sidebar-link active" href="#overview"><i class="bi bi-grid"></i> Overview</a>
+    <a class="sidebar-link" href="#users"><i class="bi bi-people"></i> Users</a>
+    <a class="sidebar-link" href="#attempts"><i class="bi bi-exclamation-triangle"></i> Failed Attempts</a>
+    <a class="sidebar-link" href="#audit"><i class="bi bi-journal-text"></i> Audit Logs</a>
+  </aside>
+  <div class="dashboard-main">
+    <div class="dashboard-header" id="overview">
+      <div><span class="eyebrow">Admin Portal</span><h1>Security operations dashboard</h1><p>View users, protected app counts, audit logs, and failed verification attempts.</p></div>
+    </div>
+    <div class="metric-grid admin-metrics">
+      <div class="metric"><span>Total Users</span><strong>{{ stats.total_users }}</strong><small>Registered accounts</small></div>
+      <div class="metric"><span>MFA Enabled</span><strong>{{ stats.mfa_enabled }}</strong><small>Enrolled Shield users</small></div>
+      <div class="metric"><span>Locked Users</span><strong>{{ stats.locked_accounts }}</strong><small>Need review</small></div>
+      <div class="metric"><span>Protected Apps</span><strong>{{ stats.protected_apps }}</strong><small>Configured apps</small></div>
+      <div class="metric"><span>Failed Verifications</span><strong>{{ stats.failed_verifications }}</strong><small>API failures</small></div>
+    </div>
+    <div class="panel mt-4" id="users">
+      <h2 class="panel-title">Users</h2>
+      <div class="table-responsive"><table class="table security-table align-middle">
+        <thead><tr><th>ID</th><th>Username</th><th>Email</th><th>Role</th><th>MFA</th><th>Locked Until</th><th>Action</th></tr></thead>
+        <tbody>{% for user in users %}<tr><td>{{ user.id }}</td><td>{{ user.username }}</td><td>{{ user.email or "-" }}</td><td>{{ user.role }}</td><td>{{ "Enabled" if user.mfa_enrolled else "Pending" }}</td><td>{{ user.locked_until or "-" }}</td><td>{% if user.locked_until %}<form method="post" action="{{ url_for('admin_unlock', user_id=user.id) }}"><input type="hidden" name="csrf_token" value="{{ csrf_token() }}"><button class="btn btn-sm btn-outline-success">Unlock</button></form>{% else %}-{% endif %}</td></tr>{% endfor %}</tbody>
+      </table></div>
+    </div>
+    <div class="panel mt-4" id="attempts">
+      <h2 class="panel-title">Failed verification attempts</h2>
+      <div class="table-responsive"><table class="table security-table align-middle">
+        <thead><tr><th>Time</th><th>App</th><th>Username</th><th>IP</th><th>Success</th><th>Reason</th></tr></thead>
+        <tbody>{% for attempt in attempts %}<tr><td>{{ attempt.attempted_at }}</td><td>{{ attempt.app_name or "-" }}</td><td>{{ attempt.username or "-" }}</td><td>{{ attempt.ip_address }}</td><td>{{ "Yes" if attempt.success else "No" }}</td><td>{{ attempt.reason }}</td></tr>{% else %}<tr><td colspan="6" class="text-secondary">No verification attempts yet.</td></tr>{% endfor %}</tbody>
+      </table></div>
+    </div>
+    <div class="panel mt-4" id="audit">
+      <h2 class="panel-title">Audit logs</h2>
+      <div class="table-responsive audit-table"><table class="table security-table align-middle">
+        <thead><tr><th>Time</th><th>User</th><th>Event</th><th>Result</th><th>Details</th></tr></thead>
+        <tbody>{% for log in logs %}<tr><td>{{ log.created_at }}</td><td>{{ log.username or "-" }}</td><td>{{ log.event_type }}</td><td>{{ log.result }}</td><td>{{ log.details }}</td></tr>{% endfor %}</tbody>
+      </table></div>
+    </div>
+  </div>
+</section>
+{% endblock %}

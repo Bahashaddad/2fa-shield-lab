@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %}Audit Logs - 2FA Shield{% endblock %}
+{% block content %}
+<section class="content-container">
+  <div class="container">
+    <div class="page-header"><span class="eyebrow">Audit Activity</span><h1>Audit logs</h1><p>Security-relevant events are recorded without passwords, OTP values, TOTP secrets, or recovery codes.</p></div>
+    <div class="panel">
+      <div class="table-responsive audit-table">
+        <table class="table security-table align-middle">
+          <thead><tr><th>Time</th><th>Username</th><th>IP</th><th>Event</th><th>Result</th><th>Details</th></tr></thead>
+          <tbody>
+          {% for log in logs %}
+            <tr><td>{{ log.created_at }}</td><td>{{ log.username or "-" }}</td><td>{{ log.ip_address }}</td><td><span class="badge badge-soft">{{ log.event_type }}</span></td><td>{{ log.result }}</td><td>{{ log.details }}</td></tr>
+          {% else %}
+            <tr><td colspan="6" class="text-secondary">No audit logs yet.</td></tr>
+          {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}
